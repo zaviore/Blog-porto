@@ -6,6 +6,7 @@ import Image from "next/image";
 
 import Link from "next/link";
 import React from "react";
+import TooltipWrapper from "./components/tooltips/tooltips";
 
 export default function Home() {
   const { theme } = useThemeContext();
@@ -30,6 +31,7 @@ export default function Home() {
             </div>
         
             <div className="flex gap-2 justify-center items-center">
+              
               <Link href="/">
                 {theme === "light" ?
                   <div className="flex gap-1 text-sm items-center rounded-lg bg-black p-1">
@@ -42,6 +44,7 @@ export default function Home() {
                   </div>
                 }
               </Link>
+              <TooltipWrapper tooltipText="CV" position="top">
               <Link href="/">
                 <div className="flex gap-2 text-sm items-center rounded-lg p-2 bg-blue-700">
                   <Image src='/linkedin.png' alt="linkedin" width={25} height={25} />
@@ -49,11 +52,13 @@ export default function Home() {
                 </div>
 
               </Link>
+              </TooltipWrapper>
               <Link href="/">
+              <TooltipWrapper tooltipText="CV" position="top">
                 <div className="flex gap-2 text-sm items-center rounded-lg p-2 bg-black text-white">
                   <IconFileFilled size={25} />
                 </div>
-
+              </TooltipWrapper>
               </Link>
               <Link href="/">
                 <div className="flex gap-2 text-sm items-center rounded-lg p-2 bg-[#ec4899] text-white">
