@@ -6,7 +6,7 @@ const TooltipWrapper = ({ children, tooltipText, position = "top" }:any) => {
 
 
   const positionClasses: any = {
-    top: "bottom-full left-1/2 transform -translate-x-1/2 mb-2",
+    top: "bottom-full mx-auto transform -translate-x-1/2 mb-2",
     bottom: "top-full left-1/2 transform -translate-x-1/2 mt-2",
     left: "right-full top-1/2 transform -translate-y-1/2 mr-2",
     right: "left-full top-1/2 transform -translate-y-1/2 ml-2",
@@ -14,7 +14,7 @@ const TooltipWrapper = ({ children, tooltipText, position = "top" }:any) => {
 
   return (
     <div
-      className="relative flex items-center"
+      className="relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

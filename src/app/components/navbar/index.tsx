@@ -1,31 +1,33 @@
-"use client"
+// components/Navbar.tsx
+"use client";
 
-import Link from 'next/link';
-import React from 'react'
-import ThemeToggle from '../themeToogle';
+import { usePageContext } from "@/context/pageContext";
+import ThemeToggle from "../themeToogle";
 
+function Navbar({ pages }: { pages: { id: number; title: string; content: any }[] }) {
+  const { currentPage, setCurrentPage } = usePageContext();
 
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function Navbar(props: any) {
-   console.log(props);
-    return (
-        <div className="bg-light-background text-light-text dark:bg-slate-900 dark:text-dark-text">
-            <div className='flex px-5 items-center justify-between container mx-auto h-16'>
-            <div className='font-bold'>
-                ZAMHADI
-            </div>
-            <div className='flex gap-3 items-center'>
-                <ThemeToggle/>
-                <Link href='/'>Hompage</Link>
-                <Link href='/'>Contact</Link>
-                <Link href='/'>About</Link>
-            </div>
-            </div>
-           
-
+  return (
+    <div className="bg-light-background text-light-text dark:bg-slate-900 dark:text-dark-text shadow-md">
+      <div className="flex px-5 items-center justify-between container mx-auto h-16">
+        <div className="font-bold">ZAMHADI</div>
+        <div className="flex gap-3 items-center">
+          <ThemeToggle/>
+          {pages.map((page) => (
+            <button
+              key={page.id}
+              className={`px-3 py-1 rounded ${
+                currentPage === page.id ? "bg-gray-700 text-white" : ""
+              }`}
+              onClick={() => setCurrentPage(page.id)}
+            >
+              {page.title}
+            </button>
+          ))}
         </div>
-    )
+      </div>
+    </div>
+  );
 }
 
-export default Navbar
+export default Navbar;
