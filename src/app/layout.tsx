@@ -4,7 +4,6 @@ import "./globals.css";
 
 import { ThemeContextProvider } from "@/context/themeContext";
 import { PageContextProvider } from "@/context/pageContext";
-import Layout from "./components/layout";
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
