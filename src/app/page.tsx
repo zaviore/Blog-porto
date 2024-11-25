@@ -17,7 +17,7 @@ export default function Pages() {
   const { currentPage } = usePageContext();
 
   return (
-    <div className="h-screen w-screen flex flex-col overflow-hidden dark:bg-dark-background dark:text-white">
+    <div className="h-screen w-screen flex flex-col overflow-y-auto overflow-x-hidden dark:bg-dark-background dark:text-white">
    
       <Navbar pages={pages}/>
       <motion.div
@@ -30,7 +30,7 @@ export default function Pages() {
         {pages.map((page) => (
           <div
             key={page.id}
-            className={`h-full w-full flex items-center justify-center`}
+            className={`h-full w-full  flex items-center justify-center`}
             style={{
                 flexShrink: 0,
                 opacity: currentPage === page.id ? 1 : 0, 
@@ -38,7 +38,7 @@ export default function Pages() {
                 transition: "opacity 0.6s ease-in-out",  
               }}
           >
-            {currentPage === page.id && <div>{page.content}</div>}
+            {currentPage === page.id && page.content}
           </div>
         ))}
       </motion.div>
