@@ -3,8 +3,6 @@
 
 import { motion } from "framer-motion";
 import Navbar from "@/app/components/navbar";
-
-import { ReactNode } from "react";
 import { usePageContext } from "@/context/pageContext";
 import PageHome from "./components/home/pageHome";
 
@@ -15,7 +13,7 @@ const pages = [
   { id: 2, title: "About Me", content: "Learn More About Me", bg: "bg-purple-500" },
 ];
 
-export default function Pages({ children }: { children: ReactNode }) {
+export default function Pages() {
   const { currentPage } = usePageContext();
 
   return (

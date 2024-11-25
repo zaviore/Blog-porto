@@ -1,10 +1,16 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const TooltipWrapper = ({ children, tooltipText, position = "top" }:any) => {
+interface ToolstipUI {
+  children: ReactNode;
+  tooltipText:string;
+  position:string;
+}
+const TooltipWrapper = ({ children, tooltipText, position = "top" }:ToolstipUI) => {
   const [isHovered, setIsHovered] = React.useState(false);
 
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const positionClasses: any = {
     top: "bottom-full mx-auto transform -translate-x-1/2 mb-2",
     bottom: "top-full left-1/2 transform -translate-x-1/2 mt-2",
@@ -18,7 +24,6 @@ const TooltipWrapper = ({ children, tooltipText, position = "top" }:any) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Child element (e.g., image or button) */}
       {children}
 
       {/* Tooltip */}

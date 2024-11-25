@@ -4,7 +4,7 @@
 import { usePageContext } from "@/context/pageContext";
 import ThemeToggle from "../themeToogle";
 
-function Navbar({ pages }: { pages: { id: number; title: string; content: any }[] }) {
+function Navbar({ pages }: { pages: { id: number; title: string; content: unknown }[] }) {
   const { currentPage, setCurrentPage } = usePageContext();
 
   return (

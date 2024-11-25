@@ -1,11 +1,11 @@
 "use client";
 
-import React, { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
 
 
 interface ThemeContextType {
-  currentPage: any;
-  setCurrentPage: any;
+  currentPage: number;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const PageContext = createContext<ThemeContextType | null>(null);
