@@ -4,10 +4,14 @@ import { usePageContext } from "@/context/pageContext";
 import ThemeToggle from "../themeToogle";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { signOut, useSession } from "next-auth/react";
 
 function Navbar({ pages }: { pages: { id: number; title: string; content: unknown }[] }) {
   const { currentPage, setCurrentPage } = usePageContext();
   const [isOpen, setIsOpen] = useState(false);
+  const { data: session } = useSession();
+  console.log(session?.user, "yes");
+  
 
   return (
     <div className="relative">
@@ -16,6 +20,8 @@ function Navbar({ pages }: { pages: { id: number; title: string; content: unknow
           <div className="font-bold">ZAMHADI</div>
           {/* Hamburger Button */}
           <div className="flex items-center gap-4">
+            {session ?     <button onClick={()=> signOut()}>logout</button> : ""}
+        
             <ThemeToggle />
             <div className="md:flex gap-3 items-center hidden">
 

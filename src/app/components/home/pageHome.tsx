@@ -10,9 +10,12 @@ import {
   IconFileFilled,
   IconMail,
 } from "@tabler/icons-react";
+import { useSession } from "next-auth/react";
 
 function PageHome() {
-
+  const { data: session } = useSession();
+  console.log(session?.user, "yes");
+  
   return (
     <div className="h-full">
       <div className="container min-h-[80vh] md:px-20 px-10 lg:px-52 justify-center md:flex flex-none mx-auto gap-10 my-10 items-center">

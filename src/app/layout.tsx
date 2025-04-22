@@ -1,10 +1,13 @@
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 
+import "./globals.css";
+import { SessionProvider } from "next-auth/react";
 import { ThemeContextProvider } from "@/context/themeContext";
 import { PageContextProvider } from "@/context/pageContext";
-
+import Navbar from "./components/navbar";
+import { pages } from "./list_page";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,14 +19,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <PageContextProvider>
+       <SessionProvider>
           <ThemeContextProvider>
-           {children}
+            <PageContextProvider>
+              <Navbar pages={pages} />
+              <main className="flex-1 overflow-y-auto">{children}</main>
+            </PageContextProvider>
           </ThemeContextProvider>
-        </PageContextProvider>
+        </SessionProvider>
       </body>
     </html>
   );
